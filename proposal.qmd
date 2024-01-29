@@ -1,0 +1,23 @@
+---
+title: "Proposal"
+---
+
+# 1. Introduction
+
+# 2. Project Objectives
+
+# 3. Motivation
+
+# **4. Our Solution**
+
+# **5. The Data**
+
+# **6. Methodology and Analytical Approach**
+
+# **7. Data Visualisation Methods**
+
+# **8. R Shiny Packages**
+
+# **9. Project Management**
+
+# 
