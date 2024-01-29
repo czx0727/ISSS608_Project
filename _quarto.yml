@@ -10,21 +10,21 @@ website:
         
     right:
       - text: "The Team"
-        href: about.qmd
+        href: about.html
       - text: "Proposal"
-        href: proposal.qmd
+        href: proposal.html
       - text: "Prototype"
-        href: prototype.qmd
+        href: prototype.html
       - text: "User Guide"
-        href: user_guide.qmd
+        href: user_guide.html
       - text: "Shiny App"
-        href: shin_app.qmd
+        href: shiny.html
       - text: "Poster"
-        href: poster.qmd
+        href: poster.html
       
 format:
   html:
-    theme: superhero
+    theme: materia
     css: styles.css
     toc: true
 

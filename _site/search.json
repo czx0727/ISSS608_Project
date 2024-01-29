@@ -19,5 +19,12 @@
     "title": "Proposal",
     "section": "",
     "text": "1. Introduction\n\n\n2. Project Objectives\n\n\n3. Motivation\n\n\n4. Our Solution\n\n\n5. The Data\n\n\n6. Methodology and Analytical Approach\n\n\n7. Data Visualisation Methods\n\n\n8. R Shiny Packages\n\n\n9. Project Management"
+  },
+  {
+    "objectID": "shiny.html",
+    "href": "shiny.html",
+    "title": "Old Faithful",
+    "section": "",
+    "text": "Number of bins:"
   }
 ]
