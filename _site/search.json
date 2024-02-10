@@ -2,9 +2,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "The Team",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "We are a group of students who are interesting in saving the world!\nWe are doing a project for ISSS608 Visual Analytics and Applications.\nThis project will not be possible without the guidance from Prof Kam"
   },
   {
     "objectID": "index.html",
@@ -19,13 +19,6 @@
     "title": "Proposal",
     "section": "",
     "text": "The need to review electricity consumption in Singapore remains crucial. Singapore, being a small and densely populated city-state with limited domestic energy resources, relies significantly on imported energy. The growing demand for electricity, driven by urbanization, industrialization, and technological advancements, underscores the importance of a thorough assessment of consumption patterns. In Singapore, the combustion of natural gas for electricity generation is the primary contributor to greenhouse gas emissions. Consequently, achieving net zero emissions by 2050 1 necessitates a substantial reduction in electricity consumption across all sectors. The household sector, accounting for 15% of total electricity consumption, is an important segment to target for impactful change.\nTo address this, the Energy Market Authority (EMA) and other relevant agencies in Singapore regularly conduct reviews to analyze current consumption trends, identify potential challenges, and formulate effective energy policies. By understanding and optimizing electricity consumption, Singapore can enhance energy efficiency, reduce environmental impact, and ensure a sustainable and resilient energy future. However, there is a need to understand further on the companies, sectors and areas in Singapore contributing to the high electricity consumption. EcoWatt is here to share on the interesting insights and proposed policies to further cut down on electricity consumption, to empower a greener Singapore."
-  },
-  {
-    "objectID": "shiny.html",
-    "href": "shiny.html",
-    "title": "Old Faithful",
-    "section": "",
-    "text": "library(shiny) # Define UI ui &lt;- fluidPage( titlePanel(“Simple Shiny App”), sidebarLayout( sidebarPanel( sliderInput(“slider”, “Select a value:”, min = 1, max = 100, value = 50) ), mainPanel( plotOutput(“plot”) ) ) )\n\nDefine server logic\nserver &lt;- function(input, output) { output\\(plot &lt;- renderPlot({  hist(rnorm(input\\)slider)) }) }\n\n\nRun the application\nshinyApp(ui, server)"
   },
   {
     "objectID": "proposal.html#footnotes",

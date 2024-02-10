@@ -46,7 +46,7 @@ a\) Perform unbiased comparisons electricity consumptions between sectors, compa
 
 b\) Gain better understanding of how they can easily predict electricity tariffs
 
-# **5. The Data**
+# **4. The Data**
 
 The following datasets will be sourced from [Energy Market Authority](https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3)
 
@@ -82,7 +82,7 @@ The current dataset will be as followed (from the tidy dataset downloaded):
 
 -   Number of Licensed Electrical, Gas Service and Cable Detection Workers
 
-# **6. Methodology and Analytical Approach**
+# **5. Methodology and Analytical Approach**
 
 a\. Exploratory Data Analysis (EDA) via Data Visualisation
 
@@ -102,7 +102,7 @@ c\. Predictive model via Data Visualisation
 
 -   Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type and investigate potential strategies to fulfill the goal of sustainable energy by leveraging insights from time series analytics
 
-# **7. Data Visualisation Methods**
+# **6. Data Visualisation Methods**
 
 In our application, the following data visualisation methods would be adopted:
 
@@ -158,7 +158,7 @@ g\. Time series visualization
 
 ④Time series forecating
 
-# **8. R Shiny Packages**
+# **7. R Shiny Packages**
 
 Our application makes use of the following R Shiny packages:
 
@@ -176,7 +176,7 @@ Our application makes use of the following R Shiny packages:
 
 -   tmap - To be used for thematic mapping, which involves visualizing spatial data by linking statistical data to spatial features
 
-# **9. Project Management**
+# **8. Project Management**
 
 For the upcoming project, we will be embracing the agile project management approach as opposed to the conventional waterfall methodology. This decision is particularly vital given the project's constrained timeline. Utilizing storyboarding through sketches and implementing rapid prototyping following the agile methodology will facilitate swift adaptations to changes through an interactive and iterative feedback loop within the team. The identified risks for this project include the learning curve associated with R Shiny and effective time management for team members balancing additional commitments from work and school. Implementing diligent project management measures and tracking mechanisms will be instrumental in mitigating these identified risks.
 
