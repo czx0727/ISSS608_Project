@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Project Title</span></a>
+ <span class="menu-text">EcoWatt Initiative</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -128,14 +128,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a></li>
   <li><a href="#project-objectives" id="toc-project-objectives" class="nav-link" data-scroll-target="#project-objectives">2. Project Objectives</a></li>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">3. Motivation</a></li>
-  <li><a href="#our-solution" id="toc-our-solution" class="nav-link" data-scroll-target="#our-solution"><strong>4. Our Solution</strong></a></li>
+  <li><a href="#our-solution" id="toc-our-solution" class="nav-link" data-scroll-target="#our-solution"><strong>3. Our Solution</strong></a></li>
   <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><strong>5. The Data</strong></a></li>
   <li><a href="#methodology-and-analytical-approach" id="toc-methodology-and-analytical-approach" class="nav-link" data-scroll-target="#methodology-and-analytical-approach"><strong>6. Methodology and Analytical Approach</strong></a></li>
   <li><a href="#data-visualisation-methods" id="toc-data-visualisation-methods" class="nav-link" data-scroll-target="#data-visualisation-methods"><strong>7. Data Visualisation Methods</strong></a></li>
   <li><a href="#r-shiny-packages" id="toc-r-shiny-packages" class="nav-link" data-scroll-target="#r-shiny-packages"><strong>8. R Shiny Packages</strong></a></li>
   <li><a href="#project-management" id="toc-project-management" class="nav-link" data-scroll-target="#project-management"><strong>9. Project Management</strong></a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -161,38 +159,136 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>1. Introduction</h1>
+<p>The need to review electricity consumption in Singapore remains crucial. Singapore, being a small and densely populated city-state with limited domestic energy resources, relies significantly on imported energy. The growing demand for electricity, driven by urbanization, industrialization, and technological advancements, underscores the importance of a thorough assessment of consumption patterns. In Singapore, the combustion of natural gas for electricity generation is the primary contributor to greenhouse gas emissions. Consequently, achieving net zero emissions by 2050 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> necessitates a substantial reduction in electricity consumption across all sectors. The household sector, accounting for 15% of total electricity consumption, is an important segment to target for impactful change.</p>
+<p>To address this, the Energy Market Authority (EMA) and other relevant agencies in Singapore regularly conduct reviews to analyze current consumption trends, identify potential challenges, and formulate effective energy policies. By understanding and optimizing electricity consumption, Singapore can enhance energy efficiency, reduce environmental impact, and ensure a sustainable and resilient energy future. However, there is a need to understand further on the companies, sectors and areas in Singapore contributing to the high electricity consumption. EcoWatt is here to share on the interesting insights and proposed policies to further cut down on electricity consumption, to empower a greener Singapore.</p>
 </section>
 <section id="project-objectives" class="level1">
 <h1>2. Project Objectives</h1>
-</section>
-<section id="motivation" class="level1">
-<h1>3. Motivation</h1>
+<p>The primary objectives of this project are as follows:</p>
+<p>a. Conduct a comprehensive analysis of electricity consumption across various regions in Singapore and formulate policies aimed at reducing consumption, with a specific focus on the area exhibiting the highest electricity usage.</p>
+<p>b. Identify companies contributing the most significant share percentage to overall electricity consumption and propose policies to mitigate and reduce their consumption.</p>
+<p>c. Identify key sectors responsible for the highest electricity consumption and develop targeted strategies to address and optimize energy usage within these sectors.</p>
+<p>d. Investigate household types associated with both the highest and lowest electricity consumption, and devise tax incentives or rebates to encourage reduced consumption, fostering a more sustainable approach to energy usage.</p>
+<p>[Planning area reflects a blend of cultural and infrastructural influences, illustrating how neighbours may influence each other’s electricity consumption, and how the age or design of buildings in an area might impact electricity consumption, specifically household electricity consumption]</p>
+<p>[Dwelling type offers insights into demographic and socio-economic factors, shedding light on how household size and economic status influence electricity consumption. For instance, larger households may consume more electricity, and private or landed properties may exhibit different usage patterns]</p>
+<p>Characteristics at the <em>individual building level</em> such as age and height are correlated to the monthly electricity consumption of public housing blocks<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Can look to strengthen and promote green building certifications and standards to ensure new buildings are designed with energy efficiency in mind. This may apply to upcoming BTO projects at Tengah, Kallang, Queenstown, Sin Ming etc. This can also include incentives for existing buildings to undergo renovations that improve their energy performance.</p>
+<p>e. Implement a robust forecasting system to predict electricity tariffs, enabling effective planning and resource allocation based on anticipated future energy costs.</p>
+<p>f. Consequently shed light on future trends, offer insights into optimising electricity usage across all sectors, and contribute to the pursuit of a low-carbon and sustainable future.</p>
 </section>
 <section id="our-solution" class="level1">
-<h1><strong>4. Our Solution</strong></h1>
+<h1><strong>3. Our Solution</strong></h1>
+<p>Using various R packages, the team will extract, analyse, and visualize electricity consumption data and build an interactive R Shiny application with visual analytics techniques to enable laymen to understand the electricity consumption at one glance. From policymakers' perspective, they are able to make more informed decision to implement electricity tariff or rebate and be in line with the Singapore Green Plan 2023</p>
+<p>Users will be able to:</p>
+<p>a) Perform unbiased comparisons electricity consumptions between sectors, companies and different regions, and household type in Singapore.</p>
+<p>b) Gain better understanding of how they can easily predict electricity tariffs</p>
 </section>
 <section id="the-data" class="level1">
 <h1><strong>5. The Data</strong></h1>
+<p>The following datasets will be sourced from <a href="https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3">Energy Market Authority</a></p>
+<p>The team will need to need population data across all regions, all grids in singapore and their coverages.</p>
+<p>The current dataset will be as followed (from the tidy dataset downloaded):</p>
+<ul>
+<li><p>Energy Flows for Electricity Generators</p></li>
+<li><p>Annual Fuel Mix for Electricity Generation by Energy Products</p></li>
+<li><p>Electricity Generation Capacity by Technology Type</p></li>
+<li><p>Electricity Generation Capacity by Generator</p></li>
+<li><p>Market Share of Electricity Generation</p></li>
+<li><p>Market Share of Electricity Retail Based On Electricity Sales</p></li>
+<li><p>Electricity Consumption by Sub-Sector (Total)</p></li>
+<li><p>Number of Electricity Accounts by Sub-Sector (Total)</p></li>
+<li><p>Total Household Electricity Consumption by Dwelling Type</p></li>
+<li><p>Average Monthly Household Electricity Consumption by Planning Area &amp; Dwelling Type</p></li>
+<li><p>Electricity and Gas Tariffs</p></li>
+<li><p>Monthly Electricity Tariffs (Low Tension Tariffs)</p></li>
+<li><p>Annual Electricity Tariffs by Components (Low Tension Tariffs)</p></li>
+<li><p>Number of Licensed Electrical, Gas Service and Cable Detection Workers</p></li>
+</ul>
 </section>
 <section id="methodology-and-analytical-approach" class="level1">
 <h1><strong>6. Methodology and Analytical Approach</strong></h1>
+<p>a. Exploratory Data Analysis (EDA) via Data Visualisation</p>
+<ul>
+<li><p>Energy supply and electricity transformation by type of energy</p></li>
+<li><p>Electricity consumption trend across the years (increase/decrease) – might want to look at pre-covid vs post-covid as an interesting insight because there's a rise of WFH arrangements</p></li>
+<li><p>Electricity consumption trend across the different sectors in Singapore</p></li>
+<li><p>Electricity consumption trend in different dwelling types in Singapore</p></li>
+</ul>
+<p>b. Geospatial Analysis via Data Visualisation</p>
+<ul>
+<li>Electricity consumption in terms of population density in different planning areas in Singapore</li>
+</ul>
+<p>c. Predictive model via Data Visualisation</p>
+<ul>
+<li>Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type and investigate potential strategies to fulfill the goal of sustainable energy by leveraging insights from time series analytics</li>
+</ul>
 </section>
 <section id="data-visualisation-methods" class="level1">
 <h1><strong>7. Data Visualisation Methods</strong></h1>
+<p>In our application, the following data visualisation methods would be adopted:</p>
+<p>a. Bar charts: for displaying energy supply and electricity transformation across different energy types to discover the major sources of electricity and their performance on transformation.</p>
+<p>b. Dot plot (or four-quadrant): for showing consumption volume and number of accounts across different sectors, which gives a quick visual impression of the distribution of electricity consumption.</p>
+<p>c. Boxplot: for exploring the statistics of household consumption between different dwelling types</p>
+<p>d. Cycle plot: for exploring seasonal patterns of electricity consumption</p>
+<p>e. Heat maps: for visualizing electricity consumption patterns across different months of the year, which can help in identifying the peak and low consumption periods.</p>
+<p>f. Interactive thematic map: for illustrating electricity consumption and population density across the geographic regions</p>
+<p>g. Time series visualization</p>
+<p><strong><em>Storyboard:</em></strong></p>
+<p>① Overview of yearly energy supply -&gt; electricity transformation -&gt; electricity demand</p>
+<ul>
+<li><p>Choose the year</p></li>
+<li><p>Show key total amount of energy supply, electricity transformation, electricity demand</p></li>
+<li><p>Bar chart (left bottom): show amount of energy supply and electricity transformation by types of energy</p></li>
+<li><p>Dot plot (right bottom): use dots to represent different sectors, put dots into the space where x axis represent numbers of accounts, y axis represent amount of consumption (can use four-quadrant instead)</p></li>
+</ul>
+<p><img src="images/1.png" class="img-fluid"></p>
+<p>② Look in detail at household consumption by dwelling types (check seasonal pattern)</p>
+<ul>
+<li><p>Choose 2 dwelling types to compare</p></li>
+<li><p>Boxplot (left bottom): show statistics of consumption between 2 dwelling types</p></li>
+<li><p>Cycle plot (right side): show the monthly consumption trend between 2 dwelling types across years</p></li>
+<li><p>Can also seperate by years before covid and after covid</p></li>
+</ul>
+<p><img src="images/2.png" class="img-fluid"></p>
+<p>③ Look in detail at household consumption by regions (check regional pattern)</p>
+<ul>
+<li><p>Choose year, region, sub-region</p></li>
+<li><p>Show 3 key indicators: consumption per person, grid coverage and peak month</p></li>
+<li><p>Thematic maps (left bottom &amp; right bottom): interactive maps showing consumption and population density of selected region</p></li>
+</ul>
+<p><img src="images/3.png" class="img-fluid"></p>
+<p>④Time series forecating</p>
 </section>
 <section id="r-shiny-packages" class="level1">
 <h1><strong>8. R Shiny Packages</strong></h1>
+<p>Our application makes use of the following R Shiny packages:</p>
+<ul>
+<li><p>tidyverse - A collection of R packages designed for data science</p></li>
+<li><p>knitr - An engine for dynamic report generation with R, enables integration with Markdown documents</p></li>
+<li><p>ggstatsplot - An extension of ggplot2 package for creating graphics with details from statistical tests included in the plots</p></li>
+<li><p>ggdist - To provide primitives for visualizing distributions using 'ggplot2' that are particularly tuned for visualizing uncertainty in either a frequentist or Bayesian mode</p></li>
+<li><p>plotly – To build interactive graph</p></li>
+<li><p>sf - To work with spatial data, specifically for representing and manipulating spatial vector data.</p></li>
+<li><p>tmap - To be used for thematic mapping, which involves visualizing spatial data by linking statistical data to spatial features</p></li>
+</ul>
 </section>
 <section id="project-management" class="level1">
 <h1><strong>9. Project Management</strong></h1>
-</section>
-<section id="section" class="level1">
-<h1></h1>
+<p>For the upcoming project, we will be embracing the agile project management approach as opposed to the conventional waterfall methodology. This decision is particularly vital given the project’s constrained timeline. Utilizing storyboarding through sketches and implementing rapid prototyping following the agile methodology will facilitate swift adaptations to changes through an interactive and iterative feedback loop within the team. The identified risks for this project include the learning curve associated with R Shiny and effective time management for team members balancing additional commitments from work and school. Implementing diligent project management measures and tracking mechanisms will be instrumental in mitigating these identified risks.</p>
+<p>An overview of our project timeline is as shown below:</p>
+<p><img src="images/Timeline.jpg" class="img-fluid"></p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>National Climate Change Secretariat. (2022, October 25)<em>. Singapore commits to achieve net zero emissions by 2050 and to a revised 2030 nationally determined contribution; Public Sector and Jurong Lake District to lead...</em> Singapore Commits to Achieve Net Zero Emissions by 2050 and to a Revised 2030 Nationally Determined Contribution; Public Sector and Jurong Lake District to Lead...<a href="https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/" class="uri">https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., &amp; Cao, K. (2023). <em>Spatial analysis of public residential housing's electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.</em> Energy &amp; Environment, 34(2), 233–254. <a href="https://doi.org/10.1177/0958305X211056031" class="uri">https://doi.org/10.1177/0958305X211056031</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

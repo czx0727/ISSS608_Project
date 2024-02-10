@@ -1,3 +1,9 @@
 ---
 title: "The Team"
 ---
+
+We are a group of students who are interesting in saving the world!
+
+We are doing a project for [ISSS608 Visual Analytics and Applications](https://isss608-ay2023-24jan.netlify.app/vaproject).
+
+This project will not be possible without the guidance from [Prof Kam](https://faculty.smu.edu.sg/profile/kam-tin-seong-486)

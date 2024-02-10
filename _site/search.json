@@ -9,22 +9,29 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Title",
+    "title": "EcoWatt Initiative",
     "section": "",
-    "text": "© Copyright ISSS608, 2024 School of Computing and Information Systems, Singapore Management University"
+    "text": "Empowering a Greener Singapore. Join us in this amazing journey today!\n\n\n\n\n\nImage obtained from link\n© Copyright ISSS608, 2024 School of Computing and Information Systems, Singapore Management University"
   },
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
     "title": "Proposal",
     "section": "",
-    "text": "1. Introduction\n\n\n2. Project Objectives\n\n\n3. Motivation\n\n\n4. Our Solution\n\n\n5. The Data\n\n\n6. Methodology and Analytical Approach\n\n\n7. Data Visualisation Methods\n\n\n8. R Shiny Packages\n\n\n9. Project Management"
+    "text": "The need to review electricity consumption in Singapore remains crucial. Singapore, being a small and densely populated city-state with limited domestic energy resources, relies significantly on imported energy. The growing demand for electricity, driven by urbanization, industrialization, and technological advancements, underscores the importance of a thorough assessment of consumption patterns. In Singapore, the combustion of natural gas for electricity generation is the primary contributor to greenhouse gas emissions. Consequently, achieving net zero emissions by 2050 1 necessitates a substantial reduction in electricity consumption across all sectors. The household sector, accounting for 15% of total electricity consumption, is an important segment to target for impactful change.\nTo address this, the Energy Market Authority (EMA) and other relevant agencies in Singapore regularly conduct reviews to analyze current consumption trends, identify potential challenges, and formulate effective energy policies. By understanding and optimizing electricity consumption, Singapore can enhance energy efficiency, reduce environmental impact, and ensure a sustainable and resilient energy future. However, there is a need to understand further on the companies, sectors and areas in Singapore contributing to the high electricity consumption. EcoWatt is here to share on the interesting insights and proposed policies to further cut down on electricity consumption, to empower a greener Singapore."
   },
   {
     "objectID": "shiny.html",
     "href": "shiny.html",
     "title": "Old Faithful",
     "section": "",
-    "text": "Number of bins:"
+    "text": "library(shiny) # Define UI ui &lt;- fluidPage( titlePanel(“Simple Shiny App”), sidebarLayout( sidebarPanel( sliderInput(“slider”, “Select a value:”, min = 1, max = 100, value = 50) ), mainPanel( plotOutput(“plot”) ) ) )\n\nDefine server logic\nserver &lt;- function(input, output) { output\\(plot &lt;- renderPlot({  hist(rnorm(input\\)slider)) }) }\n\n\nRun the application\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "proposal.html#footnotes",
+    "href": "proposal.html#footnotes",
+    "title": "Proposal",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nNational Climate Change Secretariat. (2022, October 25). Singapore commits to achieve net zero emissions by 2050 and to a revised 2030 nationally determined contribution; Public Sector and Jurong Lake District to lead... Singapore Commits to Achieve Net Zero Emissions by 2050 and to a Revised 2030 Nationally Determined Contribution; Public Sector and Jurong Lake District to Lead...https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/↩︎\nNeo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., & Cao, K. (2023). Spatial analysis of public residential housing's electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore. Energy & Environment, 34(2), 233–254. https://doi.org/10.1177/0958305X211056031↩︎"
   }
 ]

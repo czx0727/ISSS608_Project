@@ -1,5 +1,11 @@
 ---
-title: "Title"
+title: "EcoWatt Initiative"
 ---
+
+*Empowering a Greener Singapore. Join us in this amazing journey today!*
+
+![](images/ema-pl-logo.png){fig-align="center"}
+
+Image obtained from [link](https://www.poweringlives.gov.sg/programmes/eap/)
 
 © Copyright ISSS608, 2024 School of Computing and Information Systems, Singapore Management University

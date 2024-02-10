@@ -6,7 +6,7 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: "Project Title"
+        text: "EcoWatt Initiative"
         
     right:
       - text: "The Team"
@@ -18,7 +18,7 @@ website:
       - text: "User Guide"
         href: user_guide.html
       - text: "Shiny App"
-        href: shiny.html
+        href: shiny.qmd
       - text: "Poster"
         href: poster.html
       
