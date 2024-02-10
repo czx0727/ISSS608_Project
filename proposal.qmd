@@ -28,7 +28,7 @@ d\) Investigate household types associated with both the highest and lowest elec
 
 Characteristics at the *individual building level* such as age and height are correlated to the monthly electricity consumption of public housing blocks[^2].
 
-[^2]: Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., & Cao, K. (2023). *Spatial analysis of public residential housing\'s electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.* Energy & Environment, 34(2), 233--254. <https://doi.org/10.1177/0958305X211056031>
+[^2]: Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., & Cao, K. (2023). *Spatial analysis of public residential housing's electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.* Energy & Environment, 34(2), 233--254. <https://doi.org/10.1177/0958305X211056031>
 
 Can look to strengthen and promote green building certifications and standards to ensure new buildings are designed with energy efficiency in mind. This may apply to upcoming BTO projects at Tengah, Kallang, Queenstown, Sin Ming etc. This can also include incentives for existing buildings to undergo renovations that improve their energy performance.
 
@@ -38,7 +38,7 @@ f\) Consequently shed light on future trends, offer insights into optimising ele
 
 # **3. Our Solution**
 
-Using various R packages, the team will extract, analyse, and visualize electricity consumption data and build an interactive R Shiny application with visual analytics techniques to enable laymen to understand the electricity consumption at one glance. From policymakers\' perspective, they are able to make more informed decision to implement electricity tariff or rebate and be in line with the Singapore Green Plan 2023
+Using various R packages, the team will extract, analyse, and visualize electricity consumption data and build an interactive R Shiny application with visual analytics techniques to enable laymen to understand the electricity consumption at one glance. From policymakers' perspective, they are able to make more informed decision to implement electricity tariff or rebate and be in line with the [Singapore Green Plan 2023](https://www.greenplan.gov.sg/key-focus-areas/energy-reset/#:~:text=We%20aim%20to%20import%20up,carbon%20capture%2C%20utilisation%20and%20storage.).
 
 Users will be able to:
 
@@ -48,7 +48,7 @@ b\) Gain better understanding of how they can easily predict electricity tariffs
 
 # **4. The Data**
 
-The following datasets will be sourced from [Energy Market Authority](https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3)
+The following datasets will be sourced from [Energy Market Authority](https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3).
 
 The team will need to need population data across all regions, all grids in singapore and their coverages.
 
@@ -88,7 +88,7 @@ a\. Exploratory Data Analysis (EDA) via Data Visualisation
 
 -   Energy supply and electricity transformation by type of energy
 
--   Electricity consumption trend across the years (increase/decrease) -- might want to look at pre-covid vs post-covid as an interesting insight because there\'s a rise of WFH arrangements
+-   Electricity consumption trend across the years (increase/decrease) -- might want to look at pre-covid vs post-covid as an interesting insight because there's a rise of WFH arrangements
 
 -   Electricity consumption trend across the different sectors in Singapore
 
@@ -100,7 +100,7 @@ b\. Geospatial Analysis via Data Visualisation
 
 c\. Predictive model via Data Visualisation
 
--   Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type and investigate potential strategies to fulfill the goal of sustainable energy by leveraging insights from time series analytics
+-   Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type, compare and evaluate the performances of models
 
 # **6. Data Visualisation Methods**
 
@@ -118,7 +118,7 @@ e\) Heat maps: for visualizing electricity consumption patterns across different
 
 f\) Interactive thematic map: for illustrating electricity consumption and population density across the geographic regions
 
-g\) Time series visualization
+g\) Time series visualization: visualize the temporal patterns and auto-regressive of household electricity consumption, show the performances of different forecasting models
 
 ***Storyboard:***
 
@@ -156,7 +156,13 @@ g\) Time series visualization
 
 ![](images/3.png)
 
-④Time series forecating
+④Time series forecasting
+
+-   Time series plot: choose attributes and series to view the time series plot at specific level
+
+-   Models' comparison: choose models and view the comparison results
+
+![](images/4.png)
 
 # **7. R Shiny Packages**
 
@@ -168,7 +174,7 @@ Our application makes use of the following R Shiny packages:
 
 -   ggstatsplot - An extension of ggplot2 package for creating graphics with details from statistical tests included in the plots
 
--   ggdist - To provide primitives for visualizing distributions using \'ggplot2\' that are particularly tuned for visualizing uncertainty in either a frequentist or Bayesian mode
+-   ggdist - To provide primitives for visualizing distributions using 'ggplot2' that are particularly tuned for visualizing uncertainty in either a frequentist or Bayesian mode
 
 -   plotly -- To build interactive graph
 
@@ -183,3 +189,9 @@ For the upcoming project, we will be embracing the agile project management appr
 An overview of our project timeline is as shown below:
 
 ![](images/Timeline.jpg)
+
+# **9. References**
+
+Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., & Cao, K. (2023). *Spatial analysis of public residential housing's electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.* Energy & Environment, 34(2), 233--254. https://doi.org/10.1177/0958305X211056031
+
+National Climate Change Secretariat. (2022, October 25). *Singapore commits to achieve net zero emissions by 2050 and to a revised 2030 nationally determined contribution; Public Sector and Jurong Lake District to lead...* Singapore Commits to Achieve Net Zero Emissions by 2050 and to a Revised 2030 Nationally Determined Contribution; Public Sector and Jurong Lake District to Lead... https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/
