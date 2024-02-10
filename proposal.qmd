@@ -14,13 +14,13 @@ To address this, the Energy Market Authority (EMA) and other relevant agencies i
 
 The primary objectives of this project are as follows:
 
-a\. Conduct a comprehensive analysis of electricity consumption across various regions in Singapore and formulate policies aimed at reducing consumption, with a specific focus on the area exhibiting the highest electricity usage.
+a\) Conduct a comprehensive analysis of electricity consumption across various regions in Singapore and formulate policies aimed at reducing consumption, with a specific focus on the area exhibiting the highest electricity usage.
 
-b\. Identify companies contributing the most significant share percentage to overall electricity consumption and propose policies to mitigate and reduce their consumption.
+b\) Identify companies contributing the most significant share percentage to overall electricity consumption and propose policies to mitigate and reduce their consumption.
 
-c\. Identify key sectors responsible for the highest electricity consumption and develop targeted strategies to address and optimize energy usage within these sectors.
+c\) Identify key sectors responsible for the highest electricity consumption and develop targeted strategies to address and optimize energy usage within these sectors.
 
-d\. Investigate household types associated with both the highest and lowest electricity consumption, and devise tax incentives or rebates to encourage reduced consumption, fostering a more sustainable approach to energy usage.
+d\) Investigate household types associated with both the highest and lowest electricity consumption, and devise tax incentives or rebates to encourage reduced consumption, fostering a more sustainable approach to energy usage.
 
 \[Planning area reflects a blend of cultural and infrastructural influences, illustrating how neighbours may influence each other's electricity consumption, and how the age or design of buildings in an area might impact electricity consumption, specifically household electricity consumption\]
 
@@ -32,9 +32,9 @@ Characteristics at the *individual building level* such as age and height are co
 
 Can look to strengthen and promote green building certifications and standards to ensure new buildings are designed with energy efficiency in mind. This may apply to upcoming BTO projects at Tengah, Kallang, Queenstown, Sin Ming etc. This can also include incentives for existing buildings to undergo renovations that improve their energy performance.
 
-e\. Implement a robust forecasting system to predict electricity tariffs, enabling effective planning and resource allocation based on anticipated future energy costs.
+e\) Implement a robust forecasting system to predict electricity tariffs, enabling effective planning and resource allocation based on anticipated future energy costs.
 
-f\. Consequently shed light on future trends, offer insights into optimising electricity usage across all sectors, and contribute to the pursuit of a low-carbon and sustainable future.
+f\) Consequently shed light on future trends, offer insights into optimising electricity usage across all sectors, and contribute to the pursuit of a low-carbon and sustainable future.
 
 # **3. Our Solution**
 
@@ -106,19 +106,19 @@ c\. Predictive model via Data Visualisation
 
 In our application, the following data visualisation methods would be adopted:
 
-a\. Bar charts: for displaying energy supply and electricity transformation across different energy types to discover the major sources of electricity and their performance on transformation.
+a\) Bar charts: for displaying energy supply and electricity transformation across different energy types to discover the major sources of electricity and their performance on transformation.
 
-b\. Dot plot (or four-quadrant): for showing consumption volume and number of accounts across different sectors, which gives a quick visual impression of the distribution of electricity consumption.
+b\) Dot plot (or four-quadrant): for showing consumption volume and number of accounts across different sectors, which gives a quick visual impression of the distribution of electricity consumption.
 
-c\. Boxplot: for exploring the statistics of household consumption between different dwelling types
+c\) Boxplot: for exploring the statistics of household consumption between different dwelling types
 
-d\. Cycle plot: for exploring seasonal patterns of electricity consumption
+d\) Cycle plot: for exploring seasonal patterns of electricity consumption
 
-e\. Heat maps: for visualizing electricity consumption patterns across different months of the year, which can help in identifying the peak and low consumption periods.
+e\) Heat maps: for visualizing electricity consumption patterns across different months of the year, which can help in identifying the peak and low consumption periods.
 
-f\. Interactive thematic map: for illustrating electricity consumption and population density across the geographic regions
+f\) Interactive thematic map: for illustrating electricity consumption and population density across the geographic regions
 
-g\. Time series visualization
+g\) Time series visualization
 
 ***Storyboard:***
 
