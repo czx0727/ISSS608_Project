@@ -134,6 +134,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data-visualisation-methods" id="toc-data-visualisation-methods" class="nav-link" data-scroll-target="#data-visualisation-methods"><strong>6. Data Visualisation Methods</strong></a></li>
   <li><a href="#r-shiny-packages" id="toc-r-shiny-packages" class="nav-link" data-scroll-target="#r-shiny-packages"><strong>7. R Shiny Packages</strong></a></li>
   <li><a href="#project-management" id="toc-project-management" class="nav-link" data-scroll-target="#project-management"><strong>8. Project Management</strong></a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><strong>9. References</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -178,14 +179,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="our-solution" class="level1">
 <h1><strong>3. Our Solution</strong></h1>
-<p>Using various R packages, the team will extract, analyse, and visualize electricity consumption data and build an interactive R Shiny application with visual analytics techniques to enable laymen to understand the electricity consumption at one glance. From policymakers' perspective, they are able to make more informed decision to implement electricity tariff or rebate and be in line with the Singapore Green Plan 2023</p>
+<p>Using various R packages, the team will extract, analyse, and visualize electricity consumption data and build an interactive R Shiny application with visual analytics techniques to enable laymen to understand the electricity consumption at one glance. From policymakers’ perspective, they are able to make more informed decision to implement electricity tariff or rebate and be in line with the <a href="https://www.greenplan.gov.sg/key-focus-areas/energy-reset/#:~:text=We%20aim%20to%20import%20up,carbon%20capture%2C%20utilisation%20and%20storage.">Singapore Green Plan 2023</a>.</p>
 <p>Users will be able to:</p>
 <p>a) Perform unbiased comparisons electricity consumptions between sectors, companies and different regions, and household type in Singapore.</p>
 <p>b) Gain better understanding of how they can easily predict electricity tariffs</p>
 </section>
 <section id="the-data" class="level1">
 <h1><strong>4. The Data</strong></h1>
-<p>The following datasets will be sourced from <a href="https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3">Energy Market Authority</a></p>
+<p>The following datasets will be sourced from <a href="https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3">Energy Market Authority</a>.</p>
 <p>The team will need to need population data across all regions, all grids in singapore and their coverages.</p>
 <p>The current dataset will be as followed (from the tidy dataset downloaded):</p>
 <ul>
@@ -210,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 <p>a. Exploratory Data Analysis (EDA) via Data Visualisation</p>
 <ul>
 <li><p>Energy supply and electricity transformation by type of energy</p></li>
-<li><p>Electricity consumption trend across the years (increase/decrease) – might want to look at pre-covid vs post-covid as an interesting insight because there's a rise of WFH arrangements</p></li>
+<li><p>Electricity consumption trend across the years (increase/decrease) – might want to look at pre-covid vs post-covid as an interesting insight because there’s a rise of WFH arrangements</p></li>
 <li><p>Electricity consumption trend across the different sectors in Singapore</p></li>
 <li><p>Electricity consumption trend in different dwelling types in Singapore</p></li>
 </ul>
@@ -220,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>c. Predictive model via Data Visualisation</p>
 <ul>
-<li>Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type and investigate potential strategies to fulfill the goal of sustainable energy by leveraging insights from time series analytics</li>
+<li>Time series forecasting: try to figure out whether there is a seasonal trend, whether there are peak and low periods of electricity consumption within a year, whether there is a characteristics among areas or dwelling type, compare and evaluate the performances of models</li>
 </ul>
 </section>
 <section id="data-visualisation-methods" class="level1">
@@ -232,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 <p>d) Cycle plot: for exploring seasonal patterns of electricity consumption</p>
 <p>e) Heat maps: for visualizing electricity consumption patterns across different months of the year, which can help in identifying the peak and low consumption periods.</p>
 <p>f) Interactive thematic map: for illustrating electricity consumption and population density across the geographic regions</p>
-<p>g) Time series visualization</p>
+<p>g) Time series visualization: visualize the temporal patterns and auto-regressive of household electricity consumption, show the performances of different forecasting models</p>
 <p><strong><em>Storyboard:</em></strong></p>
 <p>① Overview of yearly energy supply -&gt; electricity transformation -&gt; electricity demand</p>
 <ul>
@@ -257,7 +258,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Thematic maps (left bottom &amp; right bottom): interactive maps showing consumption and population density of selected region</p></li>
 </ul>
 <p><img src="images/3.png" class="img-fluid"></p>
-<p>④Time series forecating</p>
+<p>④Time series forecasting</p>
+<ul>
+<li><p>Time series plot: choose attributes and series to view the time series plot at specific level</p></li>
+<li><p>Models’ comparison: choose models and view the comparison results</p></li>
+</ul>
+<p><img src="images/4.png" class="img-fluid"></p>
 </section>
 <section id="r-shiny-packages" class="level1">
 <h1><strong>7. R Shiny Packages</strong></h1>
@@ -266,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>tidyverse - A collection of R packages designed for data science</p></li>
 <li><p>knitr - An engine for dynamic report generation with R, enables integration with Markdown documents</p></li>
 <li><p>ggstatsplot - An extension of ggplot2 package for creating graphics with details from statistical tests included in the plots</p></li>
-<li><p>ggdist - To provide primitives for visualizing distributions using 'ggplot2' that are particularly tuned for visualizing uncertainty in either a frequentist or Bayesian mode</p></li>
+<li><p>ggdist - To provide primitives for visualizing distributions using ‘ggplot2’ that are particularly tuned for visualizing uncertainty in either a frequentist or Bayesian mode</p></li>
 <li><p>plotly – To build interactive graph</p></li>
 <li><p>sf - To work with spatial data, specifically for representing and manipulating spatial vector data.</p></li>
 <li><p>tmap - To be used for thematic mapping, which involves visualizing spatial data by linking statistical data to spatial features</p></li>
@@ -277,6 +283,11 @@ ul.task-list li input[type="checkbox"] {
 <p>For the upcoming project, we will be embracing the agile project management approach as opposed to the conventional waterfall methodology. This decision is particularly vital given the project’s constrained timeline. Utilizing storyboarding through sketches and implementing rapid prototyping following the agile methodology will facilitate swift adaptations to changes through an interactive and iterative feedback loop within the team. The identified risks for this project include the learning curve associated with R Shiny and effective time management for team members balancing additional commitments from work and school. Implementing diligent project management measures and tracking mechanisms will be instrumental in mitigating these identified risks.</p>
 <p>An overview of our project timeline is as shown below:</p>
 <p><img src="images/Timeline.jpg" class="img-fluid"></p>
+</section>
+<section id="references" class="level1">
+<h1><strong>9. References</strong></h1>
+<p>Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., &amp; Cao, K. (2023). <em>Spatial analysis of public residential housing’s electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.</em> Energy &amp; Environment, 34(2), 233–254. https://doi.org/10.1177/0958305X211056031</p>
+<p>National Climate Change Secretariat. (2022, October 25). <em>Singapore commits to achieve net zero emissions by 2050 and to a revised 2030 nationally determined contribution; Public Sector and Jurong Lake District to lead…</em> Singapore Commits to Achieve Net Zero Emissions by 2050 and to a Revised 2030 Nationally Determined Contribution; Public Sector and Jurong Lake District to Lead… https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/</p>
 
 
 </section>
@@ -286,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>National Climate Change Secretariat. (2022, October 25)<em>. Singapore commits to achieve net zero emissions by 2050 and to a revised 2030 nationally determined contribution; Public Sector and Jurong Lake District to lead...</em> Singapore Commits to Achieve Net Zero Emissions by 2050 and to a Revised 2030 Nationally Determined Contribution; Public Sector and Jurong Lake District to Lead...<a href="https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/" class="uri">https://www.nccs.gov.sg/media/press-releases/singapore-commits-to-achieve-net-zero/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., &amp; Cao, K. (2023). <em>Spatial analysis of public residential housing's electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.</em> Energy &amp; Environment, 34(2), 233–254. <a href="https://doi.org/10.1177/0958305X211056031" class="uri">https://doi.org/10.1177/0958305X211056031</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Neo, H. Y. R., Wong, N. H., Ignatius, M., Yuan, C., Xu, Y., &amp; Cao, K. (2023). <em>Spatial analysis of public residential housing’s electricity consumption in relation to urban landscape and building characteristics: A case study in Singapore.</em> Energy &amp; Environment, 34(2), 233–254. <a href="https://doi.org/10.1177/0958305X211056031" class="uri">https://doi.org/10.1177/0958305X211056031</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
