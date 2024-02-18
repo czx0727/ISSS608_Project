@@ -1,6 +1,14 @@
 ---
 title: "Proposal"
+author: "EcoWatt Initiative"
+date: 2024-02-03
+date-format: long
+date-modified: "last-modified"
 ---
+
+::: callout-note
+Added in the modified date on 18 Feb 2024. No changes since 11 Feb 2024
+:::
 
 # 1. Introduction
 

@@ -1,5 +1,9 @@
 ---
 title: "Prototype"
+author: "EcoWatt Initiative"
+date: 2024-02-18
+date-format: long
+date-modified: "last-modified"
 ---
 
 # Data Preparation 1
