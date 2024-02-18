@@ -1,0 +1,140 @@
+---
+title: "Prototype"
+---
+
+# Data Preparation 1
+
+A specific tab will be imported to do the prototype: Market Share of Electricity Generation
+
+```{r}
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, ggHoriPlot, tidyverse,sf, tmap)
+```
+
+```{r}
+SES <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T2.6")
+```
+
+```{r}
+str(SES)
+```
+
+```{r}
+unique(SES$company)
+```
+
+# Sample Visualisation 1: Boxplot
+
+```{r,warning=FALSE}
+# Assuming 'year' is a column in your SES dataframe
+filtered_data <- subset(SES, year == 2023)
+
+# Drop rows with NA values
+filtered_data <- na.omit(filtered_data)
+
+# Define a mapping of current names to new names
+filtered_data <- mutate(filtered_data, company = recode(
+  company, "Tuas Power Generation" = "Tuas",
+                   "Senoko Energy" = "Senoko",
+                   "YTL PowerSeraya" = "YTL",
+                   "Keppel Merlimau Cogen" = "Keppel",
+                   "SembCorp Cogen" = "Sembcorp",
+                   "PacificLight Power" = "PacificLight",
+                   "Taser Power" = "Taser",
+                   "Others" = "Others"),share_percent = as.numeric(share_percent) )
+
+
+
+ggplot(data = filtered_data, aes(x = reorder(company, -share_percent), y = share_percent))  +
+  geom_bar(stat = "identity") +
+  ggtitle("Market Share of Electricity Generation Companies - 2023") +
+  xlab("Company") +
+  ylab("Share Percent")+
+  scale_y_continuous(labels = scales::percent_format(scale = 1))+
+   theme(axis.title.y= element_text(angle=0), 
+        axis.title.y.right = element_text(angle=0, vjust = 1),
+        panel.grid.major = element_line(color= 'grey', size = 0.1),
+        panel.background= element_blank(), 
+        axis.line= element_line(color= 'grey'),
+        plot.caption = element_text(hjust = 0))
+```
+
+The bar graph can be further improved.
+
+# Data Preparation 2
+
+```{r}
+mpsz <- st_read(dsn = "data/geospatial", 
+                layer = "MPSZ-2019")
+```
+
+```{r}
+mpsz
+```
+
+Import back the SES Public 2023 data but with another tab
+
+```{r,warning=FALSE}
+SES_2 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.5")
+```
+
+It is keep to 2023, and overall with annual data
+
+```{r}
+SES_2_1 <- SES_2 %>%
+  filter(year == 2023, month == "Annual", dwelling_type == "Overall", Description != "Central Region", Description != "North Region", Description != "North East Region",Description != "Overall", Description != "West Region")
+  
+```
+
+Convert areas to upper case
+
+```{r, warning=FALSE}
+SES_2_1 <- SES_2_1 %>%
+  mutate_at(.vars = vars(Description), 
+          .funs = funs(toupper))
+```
+
+Combine geospatial data and SES data
+
+```{r}
+mpsz_SES <- left_join(mpsz, SES_2_1,
+                          by = c("PLN_AREA_N" = "Description"))
+```
+
+Remove rows with na
+
+```{r}
+mpsz_SES_filtered <- mpsz_SES %>%
+  mutate(kwh_per_acc = coalesce(kwh_per_acc, 0),dwelling_type = coalesce(dwelling_type, "NA"))%>%
+  select(dwelling_type,kwh_per_acc, geometry) 
+```
+
+# Sample Visualisation 2: Geospatial
+
+```{r,warning=FALSE}
+tmap_mode("plot")
+tmap_options(check.and.fix = TRUE)
+qtm(mpsz_SES_filtered, 
+    fill = "kwh_per_acc")
+
+
+```
+
+```{r,warning=FALSE}
+tm_shape(mpsz_SES_filtered)+
+  tm_fill("kwh_per_acc", 
+          style = "quantile", 
+          palette = "Blues",
+          title = "Electricity Consumption in kwh_per_acc") +
+  tm_layout(main.title = "Total Household Electricity Consumption by Household in 2023",
+            main.title.position = "center",
+            main.title.size = 1.2,
+            legend.height = 0.45, 
+            legend.width = 0.35,
+            frame = TRUE) +
+  tm_borders(alpha = 0.5) +
+  tm_compass(type="8star", size = 2) +
+  tm_scale_bar() +
+  tm_grid(alpha =0.2) +
+  tm_credits("Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and electricity data from Energy Marketing Authority (EMA)", 
+             position = c("left", "bottom"))
+```
