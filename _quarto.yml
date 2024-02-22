@@ -4,6 +4,7 @@ project:
 website:
   title: "VAA Team 13"
   navbar:
+    logo: images/ecowatt.png
     left:
       - href: index.qmd
         text: "EcoWatt Initiative"
