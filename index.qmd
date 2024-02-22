@@ -2,7 +2,7 @@
 title: "EcoWatt Initiative"
 ---
 
-*Empowering a Greener Singapore. Join us in this amazing journey today!*
+*Empowering a Greener Singapore. Join us on this amazing journey today!*
 
 ![](images/ema-pl-logo.png){fig-align="center"}
 

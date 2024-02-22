@@ -2,7 +2,7 @@
 title: "The Team"
 ---
 
-We are a group of students who are interesting in saving the world!
+We are a group of students who are interested in saving the world!
 
 We are doing a project for [ISSS608 Visual Analytics and Applications](https://isss608-ay2023-24jan.netlify.app/vaproject).
 

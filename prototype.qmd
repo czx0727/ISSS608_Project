@@ -142,3 +142,44 @@ tm_shape(mpsz_SES_filtered)+
   tm_credits("Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and electricity data from Energy Marketing Authority (EMA)", 
              position = c("left", "bottom"))
 ```
+
+# Data Preparation 3
+
+A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total) 
+
+```{r}
+SES_3 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.2")
+```
+
+```{r}
+str(SES_3)
+```
+
+```{r}
+unique(SES_3$sector)
+```
+
+```{r}
+consumption_by_year <- SES_3 %>%
+  group_by(year, sector) %>%
+  summarise(consumption_GWh = sum(consumption_GWh, na.rm = TRUE)) %>%
+  ungroup()
+
+# Convert to wide format for ggplot
+consumption_wide <- consumption_by_year %>%
+  spread(key = sector, value = consumption_GWh)
+
+# Generate the line plot
+ggplot(data = consumption_wide, aes(x = year)) +
+  geom_line(aes(y = `Commerce and Services-related`, colour = "Commerce and Services-related")) +
+  geom_line(aes(y = Households, colour = "Households")) +
+  geom_line(aes(y = `Industrial-related`, colour = "Industrial-related")) +
+  geom_line(aes(y = `Transport-Related`, colour = "Transport-Related")) +
+  geom_line(aes(y = Others, colour = "Others")) +
+  labs(title = "Electricity Consumption by Sector (2005-2023)",
+       x = "Year",
+       y = "Electricity Consumption (GWh)",
+       colour = "Sector") +
+  theme_minimal() +
+  scale_colour_manual(values = c("blue", "red", "green", "orange", "purple"))
+```
