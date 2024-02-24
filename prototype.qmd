@@ -178,6 +178,7 @@ ggplot(data = consumption_wide, aes(x = year)) +
        y = "Electricity Consumption (GWh)",
        colour = "Sector") +
   theme_minimal() +
+<<<<<<< HEAD
   scale_colour_manual(values = c("Commerce and Services-related" = "blue", 
                                  "Households" = "red", 
                                  "Industrial-related" = "green", 
@@ -325,3 +326,7 @@ girafe(ggobj = gg_point,
        width_svg = 8,
        height_svg = 8*0.618)
 ```
+=======
+  scale_colour_manual(values = c("blue", "red", "green", "orange", "purple"))
+```
+>>>>>>> cf846cd88e3348dcdb1c0f8f84eae83659d58139
