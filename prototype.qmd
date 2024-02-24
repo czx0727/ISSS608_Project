@@ -4,6 +4,12 @@ author: "EcoWatt Initiative"
 date: 2024-02-18
 date-format: long
 date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: false
+  freeze: true
+  message: false
+  warning: false
 ---
 
 # Data Preparation 1
@@ -159,7 +165,7 @@ unique(SES_3$sector)
 ```{r}
 consumption_by_year <- SES_3 %>%
   group_by(year, sector) %>%
-  summarise(consumption_GWh = sum(consumption_GWh, na.rm = TRUE)) %>%
+  summarize(consumption_GWh = sum(consumption_GWh, na.rm = TRUE)) %>%
   ungroup()
 
 # Pivot the data to a wider format, where each sector becomes a column
