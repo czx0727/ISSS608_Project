@@ -11,7 +11,7 @@ date-modified: "last-modified"
 A specific tab will be imported to do the prototype: Market Share of Electricity Generation
 
 ```{r}
-pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, ggHoriPlot, tidyverse,sf, tmap)
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, ggHoriPlot, tidyverse,sf, tmap, ggiraph, patchwork, DT, plotly)
 ```
 
 ```{r}
@@ -145,7 +145,7 @@ tm_shape(mpsz_SES_filtered)+
 
 # Data Preparation 3
 
-A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total) 
+A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total)
 
 ```{r}
 SES_3 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.2")
@@ -153,9 +153,6 @@ SES_3 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.2")
 
 ```{r}
 str(SES_3)
-```
-
-```{r}
 unique(SES_3$sector)
 ```
 
@@ -165,9 +162,9 @@ consumption_by_year <- SES_3 %>%
   summarise(consumption_GWh = sum(consumption_GWh, na.rm = TRUE)) %>%
   ungroup()
 
-# Convert to wide format for ggplot
+# Pivot the data to a wider format, where each sector becomes a column
 consumption_wide <- consumption_by_year %>%
-  spread(key = sector, value = consumption_GWh)
+  pivot_wider(names_from = sector, values_from = consumption_GWh)
 
 # Generate the line plot
 ggplot(data = consumption_wide, aes(x = year)) +
@@ -181,5 +178,150 @@ ggplot(data = consumption_wide, aes(x = year)) +
        y = "Electricity Consumption (GWh)",
        colour = "Sector") +
   theme_minimal() +
-  scale_colour_manual(values = c("blue", "red", "green", "orange", "purple"))
+  scale_colour_manual(values = c("Commerce and Services-related" = "blue", 
+                                 "Households" = "red", 
+                                 "Industrial-related" = "green", 
+                                 "Transport-Related" = "orange", 
+                                 "Others" = "purple"))
+```
+
+# Data Preparation 4
+
+Sheet 3.4 has information regarding Total Household Electricity Consumption by Dwelling Type.
+
+```{r}
+SES_4 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.4")
+```
+
+# Household Electricity Consumption Trend Across the Years
+
+In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Overall.
+
+```{r}
+filtered_data <- SES_4 %>%
+  filter(month == "Annual", DWELLING_TYPE == "Overall")
+
+# If year has already been converted to a factor, revert it back to numeric for the plot
+# filtered_data$year <- as.numeric(as.character(filtered_data$year))
+
+# Plotting
+ggplot(filtered_data, aes(x = year, y = consumption_GWh)) +
+  geom_line() + # Add line plot
+  geom_point() + # Add points at each year
+  scale_x_continuous(breaks = seq(min(filtered_data$year), max(filtered_data$year), by = 1)) + # Breaks every year
+  theme_classic() + # Use a minimal theme for the plot
+  labs(title = "Annual Household Electricity Consumption Across the Years",
+       x = "Year",
+       y = "Consumption (GWh)",
+       caption = "Source: EMA") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels for better readability
+```
+
+This line graph titled "Annual Household Electricity Consumption Across the Years" displays the household electricity consumption in gigawatt-hours (GWh) from 2005 to 2023.
+
+-   Starting in 2005, there is a gradual increase in electricity consumption, rising from just above 5000 GWh to a peak of around 8000 GWh by 2021.
+-   The period from 2005 to 2009 shows a slight, steady increase.
+-   Between 2009 and 2012, the consumption appears relatively stable, with minor fluctuations.
+-   After 2012, there is a more noticeable increase, with the consumption climbing more steeply until around 2021, which marks the highest point on the graph. From 2021 to 2022, the consumption levels off, showing stability in usage with no significant increase or decrease.
+
+This trend suggests that until 2022, households were either using more electricity over time or more households were added to the grid, increasing total consumption.
+
+# Public vs Private Housing: Household Electricity Consumption Trend Across the Years
+
+In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Public Housing and Private Housing.
+
+```{r}
+# Filter for only Private and Public Housing
+data_filtered <- SES_4 %>% 
+  filter(DWELLING_TYPE %in% c("Private Housing", "Public Housing"), month == "Annual")
+
+# Aggregate electricity consumption by month and dwelling type
+# Ensure 'month' is correctly formatted for your dataset. It may require conversion to a Date or factor type for proper sorting.
+data_aggregated <- data_filtered %>%
+  group_by(DWELLING_TYPE, year) %>%
+  summarize(total_consumption = sum(consumption_GWh), .groups = 'drop')
+
+# Plotting the trends
+ggplot(data_aggregated, aes(x = year, y = total_consumption, color = DWELLING_TYPE)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Annual Household Electricity Consumption Trends: Private vs. Public Housing",
+       x = "Year",
+       y = "Total Electricity Consumption (GWh)")
+```
+
+1.  **Private Housing**:
+
+-   From 2005 to around 2019, there is a gradual increase in electricity consumption in private housing.
+-   The trend shows some fluctuations but the general direction is upward.
+-   By the end of this period, the consumption seems to plateau or slightly decrease.
+
+2.  **Public Housing**:
+
+-   The electricity consumption for public housing starts higher than private housing in 2005 and shows an overall increasing trend.
+-   While there are fluctuations, the trend does not show any significant drops and generally maintains an upward trajectory through the period observed.
+
+3.  **Comparison**:
+
+-   Public housing consistently uses more electricity than private housing throughout the period from 2005 to 2023.
+-   The difference between public and private housing electricity consumption appears to be relatively constant, with no closing of the gap observed.
+
+4.  **Stability**:
+
+-   Both private and public housing show some year-to-year variability; however, there are no drastic changes like the one seen in the last year, which we are disregarding due to incomplete data.
+
+5.  **Trends Over Time**:
+
+-   The overall trend for both types of housing is increasing electricity consumption over the 15-year period.
+-   There is no data to suggest any long-term decrease in consumption for either housing type within the period considered.
+
+With this in mind, the graph indicates that both private and public housing had an increasing demand for electricity from 2005 to around 2022, with public housing having a consistently higher consumption level throughout the observed period.
+
+# Different Dwelling Types: Household Electricity Consumption Trend Across the Years
+
+In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to include all the dwelling types.
+
+```{r}
+# Filter for all the dwelling types
+data_dwellingtypes <- SES_4 %>% 
+  filter(DWELLING_TYPE %in% c("1-room / 2-room", "3-room", "4-room", "5-room and Executive", "Private Apartments and Condominiums", "Landed Properties", "Others"), month == "Annual")
+
+# Plotting the trends
+ggplot(data_dwellingtypes, aes(x = year, y = consumption_GWh, color = DWELLING_TYPE)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Annual Household Electricity Consumption Trends: Dwelling Types",
+       x = "Year",
+       y = "Total Electricity Consumption (GWh)")
+```
+
+# Statistics on Dwelling Types
+
+```{r}
+tooltip <- function(y, ymax, accuracy = .01) {
+  mean <- scales::number(y, accuracy = accuracy)
+  sem <- scales::number(ymax - y, accuracy = accuracy)
+  paste("Mean Household Electricity Consumption:", mean, "+/-", sem)
+}
+
+gg_point <- ggplot(data=data_dwellingtypes, 
+                   aes(x = DWELLING_TYPE),
+) +
+  stat_summary(aes(y = consumption_GWh, 
+                   tooltip = after_stat(  
+                     tooltip(y, ymax))),  
+    fun.data = "mean_se", 
+    geom = GeomInteractiveCol,  
+    fill = "light blue"
+  ) +
+  stat_summary(aes(y = consumption_GWh),
+    fun.data = mean_se,
+    geom = "errorbar", width = 0.2, size = 0.2
+  )
+
+girafe(ggobj = gg_point,
+       width_svg = 8,
+       height_svg = 8*0.618)
 ```
