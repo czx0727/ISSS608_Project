@@ -145,7 +145,7 @@ tm_shape(mpsz_SES_filtered)+
 
 # Data Preparation 3
 
-A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total) 
+A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total)
 
 ```{r}
 SES_3 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.2")
