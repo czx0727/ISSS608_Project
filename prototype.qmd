@@ -220,7 +220,7 @@ ggplot(filtered_data, aes(x = year, y = consumption_GWh)) +
 This line graph titled "Annual Household Electricity Consumption Across the Years" displays the household electricity consumption in gigawatt-hours (GWh) from 2005 to 2023.
 
 -   Starting in 2005, there is a gradual increase in electricity consumption, rising from just above 5000 GWh to a peak of around 8000 GWh by 2021.
--   The period from 2005 to 2009  shows a slight, steady increase.
+-   The period from 2005 to 2009 shows a slight, steady increase.
 -   Between 2009 and 2012, the consumption appears relatively stable, with minor fluctuations.
 -   After 2012, there is a more noticeable increase, with the consumption climbing more steeply until around 2021, which marks the highest point on the graph. From 2021 to 2022, the consumption levels off, showing stability in usage with no significant increase or decrease.
 
