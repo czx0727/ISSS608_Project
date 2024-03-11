@@ -19,7 +19,7 @@ website:
       - text: "User Guide"
         href: user_guide.html
       - text: "Shiny App"
-        href: shiny.qmd
+        href: https://chaizhixuan.shinyapps.io/EcoWatt_Initiative/
       - text: "Poster"
         href: poster.html
       

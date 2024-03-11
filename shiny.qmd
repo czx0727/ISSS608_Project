@@ -1,7 +1,0 @@
----
-title: "Old Faithful"
-format: html
-execute:
-  echo: false
-server: shiny
----
