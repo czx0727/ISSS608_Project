@@ -17,11 +17,11 @@ website:
       - text: "Prototype"
         href: prototype.html
       - text: "User Guide"
-        href: ug.html
+        href: User_Guide.pdf
       - text: "Shiny App"
         href: https://chaizhixuan.shinyapps.io/EcoWatt_Initiative/
       - text: "Poster"
-        href: poster.html
+        href: Poster.pdf
       
 format:
   html:
