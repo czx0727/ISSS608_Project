@@ -4,12 +4,6 @@ author: "EcoWatt Initiative"
 date: 2024-02-18
 date-format: long
 date-modified: "last-modified"
-execute: 
-  eval: true
-  echo: false
-  freeze: true
-  message: false
-  warning: false
 ---
 
 # Data Preparation 1

@@ -17,7 +17,7 @@ website:
       - text: "Prototype"
         href: prototype.html
       - text: "User Guide"
-        href: user_guide.html
+        href: ug.html
       - text: "Shiny App"
         href: https://chaizhixuan.shinyapps.io/EcoWatt_Initiative/
       - text: "Poster"
