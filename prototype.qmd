@@ -6,7 +6,11 @@ date-format: long
 date-modified: "last-modified"
 ---
 
-# Data Preparation 1
+::: callout-important
+Please note that the below analysis was done before take home exercise 4. However, team members' take home exercise 4 were added in the later section for reference on the prototype
+:::
+
+# 1. Data Preparation 1
 
 A specific tab will be imported to do the prototype: Market Share of Electricity Generation
 
@@ -26,7 +30,7 @@ str(SES)
 unique(SES$company)
 ```
 
-# Sample Visualisation 1: Boxplot
+## Sample Visualisation 1: Boxplot
 
 ```{r,warning=FALSE}
 # Assuming 'year' is a column in your SES dataframe
@@ -64,7 +68,7 @@ ggplot(data = filtered_data, aes(x = reorder(company, -share_percent), y = share
 
 The bar graph can be further improved.
 
-# Data Preparation 2
+# 2. Data Preparation 2
 
 ```{r}
 mpsz <- st_read(dsn = "data/geospatial", 
@@ -112,7 +116,7 @@ mpsz_SES_filtered <- mpsz_SES %>%
   select(dwelling_type,kwh_per_acc, geometry) 
 ```
 
-# Sample Visualisation 2: Geospatial
+## Sample Visualisation 2: Geospatial
 
 ```{r,warning=FALSE}
 tmap_mode("plot")
@@ -143,7 +147,7 @@ tm_shape(mpsz_SES_filtered)+
              position = c("left", "bottom"))
 ```
 
-# Data Preparation 3
+# 3. Data Preparation 3
 
 A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total)
 
@@ -185,7 +189,7 @@ ggplot(data = consumption_wide, aes(x = year)) +
                                  "Others" = "purple"))
 ```
 
-# Data Preparation 4
+# 4. Data Preparation 4
 
 Sheet 3.4 has information regarding Total Household Electricity Consumption by Dwelling Type.
 
@@ -193,7 +197,7 @@ Sheet 3.4 has information regarding Total Household Electricity Consumption by D
 SES_4 <- read_excel("data/SES_Public_2023_tidy.xlsx", sheet = "T3.4")
 ```
 
-# Household Electricity Consumption Trend Across the Years
+## Household Electricity Consumption Trend Across the Years
 
 In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Overall.
 
@@ -226,7 +230,7 @@ This line graph titled "Annual Household Electricity Consumption Across the Year
 
 This trend suggests that until 2022, households were either using more electricity over time or more households were added to the grid, increasing total consumption.
 
-# Public vs Private Housing: Household Electricity Consumption Trend Across the Years
+## Public vs Private Housing: Household Electricity Consumption Trend Across the Years
 
 In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Public Housing and Private Housing.
 
@@ -278,7 +282,7 @@ ggplot(data_aggregated, aes(x = year, y = total_consumption, color = DWELLING_TY
 
 With this in mind, the graph indicates that both private and public housing had an increasing demand for electricity from 2005 to around 2022, with public housing having a consistently higher consumption level throughout the observed period.
 
-# Different Dwelling Types: Household Electricity Consumption Trend Across the Years
+## Different Dwelling Types: Household Electricity Consumption Trend Across the Years
 
 In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to include all the dwelling types.
 
@@ -297,7 +301,7 @@ ggplot(data_dwellingtypes, aes(x = year, y = consumption_GWh, color = DWELLING_T
        y = "Total Electricity Consumption (GWh)")
 ```
 
-# Statistics on Dwelling Types
+## Statistics on Dwelling Types
 
 ```{r}
 tooltip <- function(y, ymax, accuracy = .01) {
@@ -325,3 +329,11 @@ girafe(ggobj = gg_point,
        width_svg = 8,
        height_svg = 8*0.618)
 ```
+
+# 5. Team members' Take Home Exercise 4
+
+Below are the links for the team's take home exercise 4. It is integrated for easier reference:
+
+1.  <https://czx-isss608.netlify.app/take_home_ex/take_home_ex04/take_home_ex04>
+2.  <https://isss608-ay2024-rizfebriansyah.netlify.app/take-home_ex/take-home_ex04/take-home_ex04>
+3.  <https://wyr-isss608.netlify.app/take-home_ex/take-home_ex04/take-home_ex04>
