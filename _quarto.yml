@@ -19,7 +19,7 @@ website:
       - text: "User Guide"
         href: User_Guide.pdf
       - text: "Shiny App"
-        href: https://chaizhixuan.shinyapps.io/EcoWatt_Initiative/
+        href: https://chaizhixuan.shinyapps.io/project1/
       - text: "Poster"
         href: Poster.pdf
       
