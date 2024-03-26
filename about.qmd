@@ -2,8 +2,42 @@
 title: "The Team"
 ---
 
+# Overview
+
 We are a group of students who are interested in saving the world!
 
-We are doing a project for [ISSS608 Visual Analytics and Applications](https://isss608-ay2023-24jan.netlify.app/vaproject).
+We are doing a project for [ISSS608 Visual Analytics and Applications](https://isss608-ay2023-24jan.netlify.app/vaproject) - Jan Term 2024
 
 This project will not be possible without the guidance from [Prof Kam](https://faculty.smu.edu.sg/profile/kam-tin-seong-486)
+
+# Team members
+
+The team consists of the following members:
+
+**Chai Zhixuan**
+
+Email: zxchai.2022\@mitb.smu.edu.sg
+
+Linkedin: <https://www.linkedin.com/in/chai-zhixuan-88767a89/>
+
+**Muhammad Rizqi Febriansyah**
+
+Email: rizqif.2022\@mitb.smu.edu.sg
+
+Linkedin: <https://www.linkedin.com/in/rizfebriansyah/>
+
+**Wei Yanrui**
+
+Email: yanrui.wei.2023\@mitb.smu.edu.sg
+
+Linkedin: <https://www.linkedin.com/in/yanrui-wei-b0056514b/>
+
+# Meeting Minutes
+
+Please refer to the link below for the meeting minutes (Request of access is required):
+
+1.  Meeting on [27 Jan 24](https://smu.sharepoint.com/:w:/r/teams/ISSS608VisualAnalyticsandApplications279/Shared%20Documents/General/Minutes%20of%20Meeting/1.%20ISSS608_AY2023-24Jan_G1Group13-Minutes(27Jan24).docx?d=we62a02f88b434796a1665d9723e888e5&csf=1&web=1&e=MJT3fw)
+2.  Meeting on [3 Feb 24](https://smu.sharepoint.com/:w:/r/teams/ISSS608VisualAnalyticsandApplications279/Shared%20Documents/General/Minutes%20of%20Meeting/2.%20ISSS608_AY2023-24Jan_G1Group13-Minutes%20(3Feb2024).docx?d=w734f5cc2155145ffb9f0254450c71026&csf=1&web=1&e=eDHoqu)
+3.  Meeting on [24 Feb 24](https://smu.sharepoint.com/:w:/r/teams/ISSS608VisualAnalyticsandApplications279/Shared%20Documents/General/Minutes%20of%20Meeting/3.%20ISSS608_AY2023-24Jan_G1Group13-Minutes%20(24Feb2024).docx?d=wde0ea87d03ac43379a64e9e6da987fda&csf=1&web=1&e=ki0eoj)
+4.  Meeting on [2 Mar 24](https://smu.sharepoint.com/:w:/r/teams/ISSS608VisualAnalyticsandApplications279/Shared%20Documents/General/Minutes%20of%20Meeting/4.%20ISSS608_AY2023-24Jan_G1Group13-Minutes%20(2Mar2024).docx?d=w44a6cf67556a4590b7a9f5d08fbfe87a&csf=1&web=1&e=HY6aKe)
+5.  Meeting on [25 Mar 24](https://smu.sharepoint.com/:w:/r/teams/ISSS608VisualAnalyticsandApplications279/Shared%20Documents/General/Minutes%20of%20Meeting/5.%20ISSS608_AY2023-24Jan_G1Group13-Minutes%20(25Mar2024).docx?d=w64eaf78264824b9ebc7ad0379c421c3d&csf=1&web=1&e=2N4VHM)
