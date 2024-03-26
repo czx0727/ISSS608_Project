@@ -22,6 +22,10 @@ website:
         href: https://chaizhixuan.shinyapps.io/project1/
       - text: "Poster"
         href: Poster.pdf
+      - icon: github
+        href: https://github.com/czx0727/ISSS608_Project
+      - icon: github
+        href: https://github.com/czx0727/ISSS608_Project_Shiny
       
 format:
   html:
