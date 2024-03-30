@@ -94,14 +94,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script>
-<script src="site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script>
-<script src="site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script>
-<script src="site_libs/flatbush-4.0.0/flatbush.min.js"></script>
-<link href="site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
-<script src="site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script>
-<script src="site_libs/girafe-binding-0.8.8/girafe.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -156,6 +148,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./Poster.pdf" rel="" target="">
  <span class="menu-text">Poster</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/czx0727/ISSS608_Project" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/czx0727/ISSS608_Project_Shiny" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
@@ -222,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 21, 2024</p>
+      <p class="date-modified">March 30, 2024</p>
     </div>
   </div>
     
@@ -249,12 +251,34 @@ Important
 <p>A specific tab will be imported to do the prototype: Market Share of Electricity Generation</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, ggHoriPlot, tidyverse,sf, tmap, ggiraph, patchwork, DT, plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>package 'CGPfunctions' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\user\AppData\Local\Temp\RtmpUprso7\downloaded_packages
+package 'tmap' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\user\AppData\Local\Temp\RtmpUprso7\downloaded_packages
+package 'ggiraph' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\user\AppData\Local\Temp\RtmpUprso7\downloaded_packages
+package 'DT' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\user\AppData\Local\Temp\RtmpUprso7\downloaded_packages
+package 'plotly' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\user\AppData\Local\Temp\RtmpUprso7\downloaded_packages</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SES <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T2.6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SES <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T2.6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(SES)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(SES)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [155 × 3] (S3: tbl_df/tbl/data.frame)
  $ year         : chr [1:155] "2005" "2005" "2005" "2005" ...
@@ -263,7 +287,7 @@ Important
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(SES<span class="sc">$</span>company)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(SES<span class="sc">$</span>company)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Tuas Power Generation" "Senoko Energy"         "YTL PowerSeraya"      
 [4] "Keppel Merlimau Cogen" "SembCorp Cogen"        "PacificLight Power"   
@@ -273,37 +297,37 @@ Important
 <section id="sample-visualisation-1-boxplot" class="level2">
 <h2 class="anchored" data-anchor-id="sample-visualisation-1-boxplot">Sample Visualisation 1: Boxplot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'year' is a column in your SES dataframe</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(SES, year <span class="sc">==</span> <span class="dv">2023</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with NA values</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(filtered_data)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a mapping of current names to new names</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(filtered_data, <span class="at">company =</span> <span class="fu">recode</span>(</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  company, <span class="st">"Tuas Power Generation"</span> <span class="ot">=</span> <span class="st">"Tuas"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Senoko Energy"</span> <span class="ot">=</span> <span class="st">"Senoko"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"YTL PowerSeraya"</span> <span class="ot">=</span> <span class="st">"YTL"</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Keppel Merlimau Cogen"</span> <span class="ot">=</span> <span class="st">"Keppel"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"SembCorp Cogen"</span> <span class="ot">=</span> <span class="st">"Sembcorp"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"PacificLight Power"</span> <span class="ot">=</span> <span class="st">"PacificLight"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Taser Power"</span> <span class="ot">=</span> <span class="st">"Taser"</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Others"</span> <span class="ot">=</span> <span class="st">"Others"</span>),<span class="at">share_percent =</span> <span class="fu">as.numeric</span>(share_percent) )</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(company, <span class="sc">-</span>share_percent), <span class="at">y =</span> share_percent))  <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Market Share of Electricity Generation Companies - 2023"</span>) <span class="sc">+</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Company"</span>) <span class="sc">+</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Share Percent"</span>)<span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.title.y=</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>), </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y.right =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>),</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color=</span> <span class="st">'grey'</span>, <span class="at">size =</span> <span class="fl">0.1</span>),</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background=</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line=</span> <span class="fu">element_line</span>(<span class="at">color=</span> <span class="st">'grey'</span>),</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'year' is a column in your SES dataframe</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(SES, year <span class="sc">==</span> <span class="dv">2023</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with NA values</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(filtered_data)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a mapping of current names to new names</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(filtered_data, <span class="at">company =</span> <span class="fu">recode</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  company, <span class="st">"Tuas Power Generation"</span> <span class="ot">=</span> <span class="st">"Tuas"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Senoko Energy"</span> <span class="ot">=</span> <span class="st">"Senoko"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"YTL PowerSeraya"</span> <span class="ot">=</span> <span class="st">"YTL"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Keppel Merlimau Cogen"</span> <span class="ot">=</span> <span class="st">"Keppel"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"SembCorp Cogen"</span> <span class="ot">=</span> <span class="st">"Sembcorp"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"PacificLight Power"</span> <span class="ot">=</span> <span class="st">"PacificLight"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Taser Power"</span> <span class="ot">=</span> <span class="st">"Taser"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Others"</span> <span class="ot">=</span> <span class="st">"Others"</span>),<span class="at">share_percent =</span> <span class="fu">as.numeric</span>(share_percent) )</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(company, <span class="sc">-</span>share_percent), <span class="at">y =</span> share_percent))  <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Market Share of Electricity Generation Companies - 2023"</span>) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Company"</span>) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Share Percent"</span>)<span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.title.y=</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>), </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y.right =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color=</span> <span class="st">'grey'</span>, <span class="at">size =</span> <span class="fl">0.1</span>),</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background=</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line=</span> <span class="fu">element_line</span>(<span class="at">color=</span> <span class="st">'grey'</span>),</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="prototype_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -314,8 +338,8 @@ Important
 <section id="data-preparation-2" class="level1">
 <h1>2. Data Preparation 2</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mpsz <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"data/geospatial"</span>, </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">layer =</span> <span class="st">"MPSZ-2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpsz <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"data/geospatial"</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">layer =</span> <span class="st">"MPSZ-2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MPSZ-2019' from data source 
   `C:\czx0727\ISSS608_Project\data\geospatial' using driver `ESRI Shapefile'
@@ -327,7 +351,7 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mpsz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mpsz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 332 features and 6 fields
 Geometry type: MULTIPOLYGON
@@ -361,65 +385,56 @@ First 10 features:
 </div>
 <p>Import back the SES Public 2023 data but with another tab</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SES_2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SES_2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It is keep to 2023, and overall with annual data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SES_2_1 <span class="ot">&lt;-</span> SES_2 <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2023</span>, month <span class="sc">==</span> <span class="st">"Annual"</span>, dwelling_type <span class="sc">==</span> <span class="st">"Overall"</span>, Description <span class="sc">!=</span> <span class="st">"Central Region"</span>, Description <span class="sc">!=</span> <span class="st">"North Region"</span>, Description <span class="sc">!=</span> <span class="st">"North East Region"</span>,Description <span class="sc">!=</span> <span class="st">"Overall"</span>, Description <span class="sc">!=</span> <span class="st">"West Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SES_2_1 <span class="ot">&lt;-</span> SES_2 <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2023</span>, month <span class="sc">==</span> <span class="st">"Annual"</span>, dwelling_type <span class="sc">==</span> <span class="st">"Overall"</span>, Description <span class="sc">!=</span> <span class="st">"Central Region"</span>, Description <span class="sc">!=</span> <span class="st">"North Region"</span>, Description <span class="sc">!=</span> <span class="st">"North East Region"</span>,Description <span class="sc">!=</span> <span class="st">"Overall"</span>, Description <span class="sc">!=</span> <span class="st">"West Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Convert areas to upper case</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SES_2_1 <span class="ot">&lt;-</span> SES_2_1 <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(Description), </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">.funs =</span> <span class="fu">funs</span>(toupper))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>SES_2_1 <span class="ot">&lt;-</span> SES_2_1 <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(Description), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">.funs =</span> <span class="fu">funs</span>(toupper))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Combine geospatial data and SES data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mpsz_SES <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mpsz, SES_2_1,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"PLN_AREA_N"</span> <span class="ot">=</span> <span class="st">"Description"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mpsz_SES <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mpsz, SES_2_1,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"PLN_AREA_N"</span> <span class="ot">=</span> <span class="st">"Description"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Remove rows with na</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mpsz_SES_filtered <span class="ot">&lt;-</span> mpsz_SES <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kwh_per_acc =</span> <span class="fu">coalesce</span>(kwh_per_acc, <span class="dv">0</span>),<span class="at">dwelling_type =</span> <span class="fu">coalesce</span>(dwelling_type, <span class="st">"NA"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dwelling_type,kwh_per_acc, geometry) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mpsz_SES_filtered <span class="ot">&lt;-</span> mpsz_SES <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kwh_per_acc =</span> <span class="fu">coalesce</span>(kwh_per_acc, <span class="dv">0</span>),<span class="at">dwelling_type =</span> <span class="fu">coalesce</span>(dwelling_type, <span class="st">"NA"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dwelling_type,kwh_per_acc, geometry) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sample-visualisation-2-geospatial" class="level2">
 <h2 class="anchored" data-anchor-id="sample-visualisation-2-geospatial">Sample Visualisation 2: Geospatial</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>tmap mode set to plotting</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(mpsz_SES_filtered, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"kwh_per_acc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="prototype_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
-</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"plot"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(mpsz_SES_filtered, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"kwh_per_acc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(mpsz_SES_filtered)<span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">"kwh_per_acc"</span>, </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">style =</span> <span class="st">"quantile"</span>, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"Blues"</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Electricity Consumption in kwh_per_acc"</span>) <span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Total Household Electricity Consumption by Household in 2023"</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">main.title.position =</span> <span class="st">"center"</span>,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">main.title.size =</span> <span class="fl">1.2</span>,</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.height =</span> <span class="fl">0.45</span>, </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.width =</span> <span class="fl">0.35</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">frame =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">type=</span><span class="st">"8star"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>() <span class="sc">+</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_grid</span>(<span class="at">alpha =</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_credits</span>(<span class="st">"Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)</span><span class="sc">\n</span><span class="st"> and electricity data from Energy Marketing Authority (EMA)"</span>, </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">c</span>(<span class="st">"left"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="prototype_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
-</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(mpsz_SES_filtered)<span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">"kwh_per_acc"</span>, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">style =</span> <span class="st">"quantile"</span>, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"Blues"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Electricity Consumption in kwh_per_acc"</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Total Household Electricity Consumption by Household in 2023"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">main.title.position =</span> <span class="st">"center"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">main.title.size =</span> <span class="fl">1.2</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.height =</span> <span class="fl">0.45</span>, </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.width =</span> <span class="fl">0.35</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">frame =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">type=</span><span class="st">"8star"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>() <span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_grid</span>(<span class="at">alpha =</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_credits</span>(<span class="st">"Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)</span><span class="sc">\n</span><span class="st"> and electricity data from Energy Marketing Authority (EMA)"</span>, </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">c</span>(<span class="st">"left"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -427,10 +442,10 @@ First 10 features:
 <h1>3. Data Preparation 3</h1>
 <p>A specific tab will be imported to do the prototype: Electricity Consumption by Sub-Sector (Total)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>SES_3 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>SES_3 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(SES_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(SES_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [326 × 4] (S3: tbl_df/tbl/data.frame)
  $ year           : chr [1:326] "2005" "2005" "2005" "2005" ...
@@ -438,7 +453,7 @@ First 10 features:
  $ sub_sector     : chr [1:326] "Accommodation and Food Services" "Commerce and Services-related" "Financial and Insurance Activities" "Information and Communications" ...
  $ consumption_GWh: num [1:326] 1031 13076 1292 667 3613 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(SES_3<span class="sc">$</span>sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(SES_3<span class="sc">$</span>sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Commerce and Services-related" "Households"                   
 [3] "Industrial-related"            "Others"                       
@@ -447,70 +462,32 @@ First 10 features:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>consumption_by_year <span class="ot">&lt;-</span> SES_3 <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, sector) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">consumption_GWh =</span> <span class="fu">sum</span>(consumption_GWh, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'year'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot the data to a wider format, where each sector becomes a column</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>consumption_wide <span class="ot">&lt;-</span> consumption_by_year <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sector, <span class="at">values_from =</span> consumption_GWh)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the line plot</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> consumption_wide, <span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Commerce and Services-related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Commerce and Services-related"</span>)) <span class="sc">+</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Households, <span class="at">colour =</span> <span class="st">"Households"</span>)) <span class="sc">+</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Industrial-related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Industrial-related"</span>)) <span class="sc">+</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Transport-Related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Transport-Related"</span>)) <span class="sc">+</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Others, <span class="at">colour =</span> <span class="st">"Others"</span>)) <span class="sc">+</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Electricity Consumption by Sector (2005-2023)"</span>,</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Electricity Consumption (GWh)"</span>,</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Sector"</span>) <span class="sc">+</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Commerce and Services-related"</span> <span class="ot">=</span> <span class="st">"blue"</span>, </span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Households"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Industrial-related"</span> <span class="ot">=</span> <span class="st">"green"</span>, </span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Transport-Related"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Others"</span> <span class="ot">=</span> <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-ℹ Do you need to adjust the group aesthetic?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-ℹ Do you need to adjust the group aesthetic?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-ℹ Do you need to adjust the group aesthetic?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-ℹ Do you need to adjust the group aesthetic?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-ℹ Do you need to adjust the group aesthetic?</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>consumption_by_year <span class="ot">&lt;-</span> SES_3 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, sector) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">consumption_GWh =</span> <span class="fu">sum</span>(consumption_GWh, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot the data to a wider format, where each sector becomes a column</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>consumption_wide <span class="ot">&lt;-</span> consumption_by_year <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sector, <span class="at">values_from =</span> consumption_GWh)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the line plot</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> consumption_wide, <span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Commerce and Services-related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Commerce and Services-related"</span>)) <span class="sc">+</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Households, <span class="at">colour =</span> <span class="st">"Households"</span>)) <span class="sc">+</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Industrial-related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Industrial-related"</span>)) <span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Transport-Related</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">"Transport-Related"</span>)) <span class="sc">+</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Others, <span class="at">colour =</span> <span class="st">"Others"</span>)) <span class="sc">+</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Electricity Consumption by Sector (2005-2023)"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Electricity Consumption (GWh)"</span>,</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Sector"</span>) <span class="sc">+</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Commerce and Services-related"</span> <span class="ot">=</span> <span class="st">"blue"</span>, </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Households"</span> <span class="ot">=</span> <span class="st">"red"</span>, </span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Industrial-related"</span> <span class="ot">=</span> <span class="st">"green"</span>, </span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Transport-Related"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Others"</span> <span class="ot">=</span> <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="prototype_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -520,33 +497,29 @@ First 10 features:
 <h1>4. Data Preparation 4</h1>
 <p>Sheet 3.4 has information regarding Total Household Electricity Consumption by Dwelling Type.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>SES_4 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Expecting numeric in A2414 / R2414C1: got 'Data for 2023 is as at Jun
-2023.'</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>SES_4 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SES_Public_2023_tidy.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"T3.4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="household-electricity-consumption-trend-across-the-years" class="level2">
 <h2 class="anchored" data-anchor-id="household-electricity-consumption-trend-across-the-years">Household Electricity Consumption Trend Across the Years</h2>
 <p>In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Overall.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="st">"Annual"</span>, DWELLING_TYPE <span class="sc">==</span> <span class="st">"Overall"</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If year has already been converted to a factor, revert it back to numeric for the plot</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># filtered_data$year &lt;- as.numeric(as.character(filtered_data$year))</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> consumption_GWh)) <span class="sc">+</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="co"># Add line plot</span></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># Add points at each year</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(filtered_data<span class="sc">$</span>year), <span class="fu">max</span>(filtered_data<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Breaks every year</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="co"># Use a minimal theme for the plot</span></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Across the Years"</span>,</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Consumption (GWh)"</span>,</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: EMA"</span>) <span class="sc">+</span></span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="co"># Rotate x-axis labels for better readability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="st">"Annual"</span>, DWELLING_TYPE <span class="sc">==</span> <span class="st">"Overall"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If year has already been converted to a factor, revert it back to numeric for the plot</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># filtered_data$year &lt;- as.numeric(as.character(filtered_data$year))</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> consumption_GWh)) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="co"># Add line plot</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># Add points at each year</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(filtered_data<span class="sc">$</span>year), <span class="fu">max</span>(filtered_data<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Breaks every year</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="co"># Use a minimal theme for the plot</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Across the Years"</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Consumption (GWh)"</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: EMA"</span>) <span class="sc">+</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="co"># Rotate x-axis labels for better readability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="prototype_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -564,24 +537,24 @@ First 10 features:
 <h2 class="anchored" data-anchor-id="public-vs-private-housing-household-electricity-consumption-trend-across-the-years">Public vs Private Housing: Household Electricity Consumption Trend Across the Years</h2>
 <p>In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to only include Public Housing and Private Housing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for only Private and Public Housing</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DWELLING_TYPE <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Private Housing"</span>, <span class="st">"Public Housing"</span>), month <span class="sc">==</span> <span class="st">"Annual"</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate electricity consumption by month and dwelling type</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'month' is correctly formatted for your dataset. It may require conversion to a Date or factor type for proper sorting.</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>data_aggregated <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DWELLING_TYPE, year) <span class="sc">%&gt;%</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_consumption =</span> <span class="fu">sum</span>(consumption_GWh), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the trends</span></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_aggregated, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_consumption, <span class="at">color =</span> DWELLING_TYPE)) <span class="sc">+</span></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Trends: Private vs. Public Housing"</span>,</span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Electricity Consumption (GWh)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for only Private and Public Housing</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DWELLING_TYPE <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Private Housing"</span>, <span class="st">"Public Housing"</span>), month <span class="sc">==</span> <span class="st">"Annual"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate electricity consumption by month and dwelling type</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'month' is correctly formatted for your dataset. It may require conversion to a Date or factor type for proper sorting.</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>data_aggregated <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DWELLING_TYPE, year) <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_consumption =</span> <span class="fu">sum</span>(consumption_GWh), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the trends</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_aggregated, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_consumption, <span class="at">color =</span> DWELLING_TYPE)) <span class="sc">+</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Trends: Private vs. Public Housing"</span>,</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Electricity Consumption (GWh)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="prototype_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -627,18 +600,18 @@ First 10 features:
 <h2 class="anchored" data-anchor-id="different-dwelling-types-household-electricity-consumption-trend-across-the-years">Different Dwelling Types: Household Electricity Consumption Trend Across the Years</h2>
 <p>In the dataset itself, we can find the total household electricity annually by filtering the month column to only include Annual and DWELLING_TYPE to include all the dwelling types.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for all the dwelling types</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>data_dwellingtypes <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DWELLING_TYPE <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1-room / 2-room"</span>, <span class="st">"3-room"</span>, <span class="st">"4-room"</span>, <span class="st">"5-room and Executive"</span>, <span class="st">"Private Apartments and Condominiums"</span>, <span class="st">"Landed Properties"</span>, <span class="st">"Others"</span>), month <span class="sc">==</span> <span class="st">"Annual"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the trends</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_dwellingtypes, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> consumption_GWh, <span class="at">color =</span> DWELLING_TYPE)) <span class="sc">+</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Trends: Dwelling Types"</span>,</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Electricity Consumption (GWh)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for all the dwelling types</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>data_dwellingtypes <span class="ot">&lt;-</span> SES_4 <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DWELLING_TYPE <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1-room / 2-room"</span>, <span class="st">"3-room"</span>, <span class="st">"4-room"</span>, <span class="st">"5-room and Executive"</span>, <span class="st">"Private Apartments and Condominiums"</span>, <span class="st">"Landed Properties"</span>, <span class="st">"Others"</span>), month <span class="sc">==</span> <span class="st">"Annual"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the trends</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_dwellingtypes, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> consumption_GWh, <span class="at">color =</span> DWELLING_TYPE)) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual Household Electricity Consumption Trends: Dwelling Types"</span>,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Electricity Consumption (GWh)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="prototype_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -647,37 +620,30 @@ First 10 features:
 <section id="statistics-on-dwelling-types" class="level2">
 <h2 class="anchored" data-anchor-id="statistics-on-dwelling-types">Statistics on Dwelling Types</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>tooltip <span class="ot">&lt;-</span> <span class="cf">function</span>(y, ymax, <span class="at">accuracy =</span> .<span class="dv">01</span>) {</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">number</span>(y, <span class="at">accuracy =</span> accuracy)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  sem <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">number</span>(ymax <span class="sc">-</span> y, <span class="at">accuracy =</span> accuracy)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">"Mean Household Electricity Consumption:"</span>, mean, <span class="st">"+/-"</span>, sem)</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>gg_point <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>data_dwellingtypes, </span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x =</span> DWELLING_TYPE),</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y =</span> consumption_GWh, </span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">tooltip =</span> <span class="fu">after_stat</span>(  </span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">tooltip</span>(y, ymax))),  </span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> GeomInteractiveCol,  </span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"light blue"</span></span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y =</span> consumption_GWh),</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun.data =</span> mean_se,</span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">0.2</span></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">girafe</span>(<span class="at">ggobj =</span> gg_point,</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">width_svg =</span> <span class="dv">8</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">height_svg =</span> <span class="dv">8</span><span class="sc">*</span><span class="fl">0.618</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="girafe html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-74e0bbe4eff3fedb4ee3" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-74e0bbe4eff3fedb4ee3">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_21029822_2d73_4c93_bce9_30beeeb058db' viewBox='0 0 576 355.97'>\n <defs id='svg_21029822_2d73_4c93_bce9_30beeeb058db_defs'>\n  <clipPath id='svg_21029822_2d73_4c93_bce9_30beeeb058db_c1'>\n   <rect x='0' y='0' width='576' height='355.97'/>\n  <\/clipPath>\n  <clipPath id='svg_21029822_2d73_4c93_bce9_30beeeb058db_c2'>\n   <rect x='42.93' y='5.48' width='527.59' height='318.99'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_21029822_2d73_4c93_bce9_30beeeb058db_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_21029822_2d73_4c93_bce9_30beeeb058db_c1)'>\n   <rect x='0' y='0' width='576' height='355.97' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='576' height='355.97' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_21029822_2d73_4c93_bce9_30beeeb058db_c2)'>\n   <rect x='42.93' y='5.48' width='527.59' height='318.99' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='42.93,270.21 570.52,270.21' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,190.67 570.52,190.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,111.14 570.52,111.14' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,31.61 570.52,31.61' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,309.97 570.52,309.97' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,230.44 570.52,230.44' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,150.91 570.52,150.91' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='42.93,71.37 570.52,71.37' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='86.90,324.47 86.90,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='160.17,324.47 160.17,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='233.45,324.47 233.45,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='306.73,324.47 306.73,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='380.00,324.47 380.00,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='453.28,324.47 453.28,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='526.55,324.47 526.55,5.48' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e1' x='53.92' y='292.04' width='65.95' height='17.93' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 112.74 +/- 9.01'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e2' x='127.2' y='193.7' width='65.95' height='116.28' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 730.99 +/- 21.85'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e3' x='200.47' y='46.83' width='65.95' height='263.15' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 1 654.33 +/- 56.55'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e4' x='273.75' y='61.27' width='65.95' height='248.7' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 1 563.53 +/- 46.30'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e5' x='347.03' y='150.65' width='65.95' height='159.32' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 1 001.62 +/- 30.01'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e6' x='420.3' y='307.64' width='65.95' height='2.33' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 14.65 +/- 1.13'/>\n   <rect id='svg_21029822_2d73_4c93_bce9_30beeeb058db_e7' x='493.58' y='33.01' width='65.95' height='276.96' fill='#ADD8E6' fill-opacity='1' stroke='none' title='Mean Household Electricity Consumption: 1 741.16 +/- 81.94'/>\n   <polyline points='79.57,290.61 94.22,290.61' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='86.90,290.61 86.90,293.47' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='79.57,293.47 94.22,293.47' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='152.84,190.22 167.50,190.22' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='160.17,190.22 160.17,197.17' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='152.84,197.17 167.50,197.17' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='226.12,37.83 240.78,37.83' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='233.45,37.83 233.45,55.82' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='226.12,55.82 240.78,55.82' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='299.40,53.90 314.05,53.90' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='306.73,53.90 306.73,68.63' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='299.40,68.63 314.05,68.63' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='372.67,145.88 387.33,145.88' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='380.00,145.88 380.00,155.42' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='372.67,155.42 387.33,155.42' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='445.95,307.46 460.61,307.46' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='453.28,307.46 453.28,307.82' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='445.95,307.82 460.61,307.82' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='519.23,19.98 533.88,19.98' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='526.55,19.98 526.55,46.05' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='519.23,46.05 533.88,46.05' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='0.43' stroke-linejoin='round' stroke-linecap='butt'/>\n  <\/g>\n  <g clip-path='url(#svg_21029822_2d73_4c93_bce9_30beeeb058db_c1)'>\n   <text x='33.1' y='313.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='23.31' y='233.59' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>500<\/text>\n   <text x='18.41' y='154.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1000<\/text>\n   <text x='18.41' y='74.52' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1500<\/text>\n   <polyline points='40.19,309.97 42.93,309.97' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='40.19,230.44 42.93,230.44' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='40.19,150.91 42.93,150.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='40.19,71.37 42.93,71.37' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='86.90,327.21 86.90,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='160.17,327.21 160.17,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='233.45,327.21 233.45,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='306.73,327.21 306.73,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='380.00,327.21 380.00,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='453.28,327.21 453.28,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='526.55,327.21 526.55,324.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='55.35' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1-room / 2-room<\/text>\n   <text x='146.23' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>3-room<\/text>\n   <text x='219.51' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>4-room<\/text>\n   <text x='263.92' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>5-room and Executive<\/text>\n   <text x='344.03' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>Landed Properties<\/text>\n   <text x='440.07' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>Others<\/text>\n   <text x='450.24' y='335.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>Private Apartments and Condominiums<\/text>\n   <text x='260.57' y='348.17' font-size='8.25pt' font-family='Arial'>DWELLING_TYPE<\/text>\n   <text transform='translate(13.36,211.76) rotate(-90.00)' font-size='8.25pt' font-family='Arial'>consumption_GWh<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_21029822_2d73_4c93_bce9_30beeeb058db","ratio":1.618122977346278,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script>
-</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tooltip <span class="ot">&lt;-</span> <span class="cf">function</span>(y, ymax, <span class="at">accuracy =</span> .<span class="dv">01</span>) {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">number</span>(y, <span class="at">accuracy =</span> accuracy)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  sem <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">number</span>(ymax <span class="sc">-</span> y, <span class="at">accuracy =</span> accuracy)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">"Mean Household Electricity Consumption:"</span>, mean, <span class="st">"+/-"</span>, sem)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>gg_point <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>data_dwellingtypes, </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x =</span> DWELLING_TYPE),</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y =</span> consumption_GWh, </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">tooltip =</span> <span class="fu">after_stat</span>(  </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">tooltip</span>(y, ymax))),  </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> GeomInteractiveCol,  </span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"light blue"</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y =</span> consumption_GWh),</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun.data =</span> mean_se,</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">0.2</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="fu">girafe</span>(<span class="at">ggobj =</span> gg_point,</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">width_svg =</span> <span class="dv">8</span>,</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">height_svg =</span> <span class="dv">8</span><span class="sc">*</span><span class="fl">0.618</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

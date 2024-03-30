@@ -4,6 +4,12 @@ author: "EcoWatt Initiative"
 date: 2024-02-18
 date-format: long
 date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  freeze: true
+  warning: false
+  message: false
 ---
 
 ::: callout-important
@@ -119,6 +125,7 @@ mpsz_SES_filtered <- mpsz_SES %>%
 ## Sample Visualisation 2: Geospatial
 
 ```{r,warning=FALSE}
+#| eval: false
 tmap_mode("plot")
 tmap_options(check.and.fix = TRUE)
 qtm(mpsz_SES_filtered, 
@@ -128,6 +135,7 @@ qtm(mpsz_SES_filtered,
 ```
 
 ```{r,warning=FALSE}
+#| eval: false
 tm_shape(mpsz_SES_filtered)+
   tm_fill("kwh_per_acc", 
           style = "quantile", 
@@ -304,6 +312,7 @@ ggplot(data_dwellingtypes, aes(x = year, y = consumption_GWh, color = DWELLING_T
 ## Statistics on Dwelling Types
 
 ```{r}
+#| eval: false
 tooltip <- function(y, ymax, accuracy = .01) {
   mean <- scales::number(y, accuracy = accuracy)
   sem <- scales::number(ymax - y, accuracy = accuracy)
